@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go mod init simple-im)",
+      "Bash(go mod tidy)",
+      "Bash(go run .)",
+      "Bash(start client.html)",
+      "Bash(go run test_bucket.go)",
+      "Bash(curl -X POST http://localhost:3111/push -H \"Content-Type: application/json\" -d \"{\"\"user_id\"\":\"\"user123\"\",\"\"message\"\":\"\"Hello from Bucket test!\"\"}\")"
+    ]
+  }
+}
