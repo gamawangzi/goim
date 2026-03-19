@@ -1,7 +1,6 @@
-package main
+package comet
 
 import (
-	"encoding/json"
 	"hash/fnv"
 	"sync"
 )
@@ -84,17 +83,13 @@ func (m *BucketManager) Get(userID string) *Channel{
 	return channel 
 }
 
-func (m *BucketManager) Push(userID string , msg Message) error{
+func (m *BucketManager) Push(userID string , msg string) error{
 	bucket := m.getBucket(userID)
 	conn,ok := bucket.Get(userID)
 	if !ok {
 		return ErrUserNotOnline
 	}
-	data,err := json.Marshal(msg)
-	if err != nil {
-		return err
-	}
-	return conn.Push(string(data))
+	return conn.Push(msg)
 }
 
 // 总连接数 

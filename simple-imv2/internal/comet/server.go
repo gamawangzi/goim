@@ -1,4 +1,4 @@
-package main
+package comet
 
 import (
 	"encoding/json"
@@ -148,4 +148,3 @@ func (s *WSServer) sendHeartbeatReply(conn *websocket.Conn) {
 	data, _ := msg.ToJSON()
 	conn.WriteMessage(websocket.TextMessage, data)
 }
-

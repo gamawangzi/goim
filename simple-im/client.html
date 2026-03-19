@@ -146,6 +146,10 @@
                     const pushMsg = JSON.parse(msg.body);
                     addMessage('收到消息: ' + pushMsg.content, 'received');
                     break;
+                case 6: // 房间消息 
+                    const RoomMsg = JSON.parse(msg.body);
+                    addMessage('收到房间消息: ' + RoomMsg.content, 'received');
+                    break;
                 default:
                     addMessage('未知消息类型: ' + msg.op);
             }

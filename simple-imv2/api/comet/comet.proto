@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package comet;
+
+option go_package = "simple-imv2/api/comet";
+
+// Comet 服务定义
+service CometService {
+  // 推送消息给单个用户
+  rpc PushMsg(PushMsgReq) returns (PushMsgReply);
+
+  // 推送消息给房间
+  rpc PushRoom(PushRoomReq) returns (PushRoomReply);
+}
+
+// 推送消息请求
+message PushMsgReq {
+  string user_id = 1;   // 用户ID
+  string message = 2;   // 消息内容（JSON字符串）
+}
+
+// 推送消息响应
+message PushMsgReply {
+  int32 code = 1;       // 0-成功，其他-失败
+  string msg = 2;       // 响应消息
+}
+
+// 推送房间消息请求
+message PushRoomReq {
+  string room_id = 1;   // 房间ID
+  string message = 2;   // 消息内容（JSON字符串）
+  repeated string user_ids = 3;  // 房间成员列表
+}
+
+// 推送房间消息响应
+message PushRoomReply {
+  int32 code = 1;       // 0-成功，其他-失败
+  string msg = 2;       // 响应消息
+}
